@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
         require('../db.php');
         $sql = "SELECT id, nomfournisseur FROM fournisseur";
@@ -42,6 +42,8 @@
         </div>
     </div>
 
+
+    
     <script>
         // Affiche la modal
         document.getElementById("openModalBtn").addEventListener("click", function() {
@@ -61,4 +63,23 @@
 
     </script>
 </body>
-</html>
+</html> -->
+<?php
+require('../db.php');
+
+$sql = "SELECT id, nomfournisseur FROM fournisseur";
+$result = $db->query($sql);
+
+if ($result) {
+    echo "<h1>Liste des Fournisseurs</h1>";
+    echo "<ul>";
+    foreach ($result as $row) {
+        echo "<li><a href='../factCrea/index.php?id={$row['id']}'>{$row['nomfournisseur']}</a></li>";
+    }
+    echo "</ul>";
+
+    $result->free();
+} else {
+    echo "Erreur lors de la récupération des données.";
+}
+?>
