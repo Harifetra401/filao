@@ -3,13 +3,18 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nomfilao = $_POST["nom"];
-
-    
-        $sql = "INSERT INTO poisson (nomfilao) VALUES ('$nomfilao')";
+        echo $nomfilao;
+        
+        
+        $sql = "INSERT INTO poisson(`nomFilao`) VALUES ('$nomfilao')";
         $stmt = $db->prepare($sql);
 
         if ($stmt->execute()) {
-            header("location: front.php");
+            ?>
+    <script>
+        document.location.href = "../accueil?id_fournisseur=<?=$_GET['id_fournisseur']?>&numFact=<?=$_GET['numFact']?>";
+    </script>
+<?php
         } else {
             echo "Erreur lors de l'insertion des données.";
         }

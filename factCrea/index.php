@@ -20,12 +20,13 @@ if (isset($_GET['id'])) {
         echo "<h1>Détails du Fournisseur</h1>";
    
         ?>
+        <?php echo $row['id']?>
             <form action="back.php" method="post">
-                <input type='hidden' name='idFournisseur' value='<?php $row['id']?>'>
+                <input type='hidden' name='idFournisseur' value='<?php echo $row['id']?>'>
                 <input type="number" name="NumFac" id=""><br>
                 <label for="filao">Sélectionnez un filao :</label>
                 <select id="poisson updateDiv"  name="poisson">
-                    <option value=""></option>
+                    
                     <?php foreach ($filaos as $filao) : ?>
                         <option value="<?= $filao['id'] ?>"><?= $filao['nomfilao'] ?> <br></option>
                     <?php endforeach; ?>
